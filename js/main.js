@@ -2,16 +2,19 @@
 
 const Ismi = document.getElementById("Ismi");
 const Familyasi = document.getElementById("Familyasi");
-const group = document.getElementById("group");
+const lavozim = document.getElementById("lavozim");
 const uylanganmi = document.getElementById("uylanganmi");
 
 const IsmiEdit = document.getElementById("IsmiEdit");
 const FamilyasiEdit = document.getElementById("FamilyasiEdit");
-const groupEdit = document.getElementById("groupEdit");
-const doesWorkEdit = document.getElementById("doesWorkEdit");
+const lavozimEdit = document.getElementById("lavozimEdit");
+const uylanganmiedit = document.getElementById("uylanganmiedit");
+const maoshedit = document.geteleementById("maoshedit");
+const maosh = document.geteleementById("maosh");
 
+const Data = document.getElementsById("date");
 const search = document.getElementById("search");
-const filterSelect = document.getElementById("filter-select");
+const lavozimSelect = document.getElementById("lavozim-select");
 const studentsList = document.getElementById("students-list");
 const btnAddStudent = document.getElementById("btn-add-student");
 const btnEditStudent = document.getElementById("btn-edit-student");
@@ -55,7 +58,7 @@ function addStudent() {
     id: students.length + 1,
     Ismi: Ismi.value,
     Familyasi: Familyasi.value,
-    group: group.value,
+    lavozim: lavozim.value,
     uylanganmi: uylanganmi.checked,
   };
 
@@ -65,7 +68,7 @@ function addStudent() {
 
   ss.value = "";
   Familyasi.value = "";
-  group.value = "REN32ACT ";
+  lavozim.value = "Junior ";
   uylanganmi.checked = false;
 }
 btnAddStudent.addEventListener("click", addStudent);
@@ -73,7 +76,7 @@ btnAddStudent.addEventListener("click", addStudent);
 // DELETE STUDENT   //////////////////
 function deleteStudent(id) {
   if (confirm("Are you sure you want to delete this student?")) {
-    let newStudents = students.filter((std) => std.id !== id);
+    let newStudents = students.lavozim((std) => std.id !== id);
 
     localStorage.setItem("students", JSON.stringify(newStudents));
     location.reload();
@@ -88,8 +91,8 @@ function editStudent(id) {
 
   IsmiEdit.value = student.Ismi;
   FamilyasiEdit.value = student.Familyasi;
-  groupEdit.value = student.group;
-  doesWorkEdit.checked = student.doesWork;
+  lavozimEdit.value = student.lavozim;
+  uylanganmiedit.checked = student.uylanganmi;
 }
 
 // UPDATE STUDENT //////////////////
@@ -98,8 +101,11 @@ function updateStudent() {
     id: studentEditing.id,
     Ismi: IsmiEdit.value,
     Familyasi: FamilyasiEdit.value,
-    group: groupEdit.value,
-    doesWork: doesWorkEdit.checked,
+    Manzil: modal.value,
+    Tugilgankuni: Data.value,
+    lavozim: lavozimEdit.value,
+    Maoshi: maosh.value,
+    uylanganmi: uylanganmi.checked,
   };
 
   let newStudents = students.map((st) => (st.id === student.id ? student : st));
@@ -109,14 +115,14 @@ function updateStudent() {
 }
 btnEditStudent.addEventListener("click", updateStudent);
 
-// FILTER STUDENTS ///////////////////
-filterSelect.addEventListener("change", function (e) {
+// lavozim STUDENTS ///////////////////
+lavozimSelect.addEventListener("change", function (e) {
   let grp = e.target.value;
   let newStudentsList = [];
   if (grp === "Lavozim turini tanlang") {
     newStudentsList = students;
   } else {
-    newStudentsList = students.filter((st) => st.group === grp);
+    newStudentsList = students.lavozim((st) => st.lavozim === grp);
   }
   displayStudents(newStudentsList);
 });
@@ -128,7 +134,7 @@ search.addEventListener("input", function (e) {
   if (text === "") {
     newSearchedList = students;
   } else {
-    newSearchedList = students.filter(
+    newSearchedList = students.lavozim(
       (st) =>
         st.Ismi.toLowerCase().includes(text.toLowerCase()) ||
         st.Familyasi.toLowerCase().includes(text.toLowerCase())
