@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students app</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      aria-labelledby="addModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addModalLabel">
+              O`quvchining ma`lumoti
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="Ismi" class="form-label">Ismi</label>
+                <input
+                  type="text"
+                  id="Ismi"
+                  name="Ismi"
+                  class="form-control p-2"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Familyasi" class="form-label">Familyasi</label>
+                <input
+                  type="text"
+                  id="Familyasi"
+                  name="Familyasi"
+                  class="form-control p-2"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Familyasi" class="form-label"
+                  >Manzilni tanlang</label
+                >
+                <select
+                  name="modal-select"
+                  id="modal-select"
+                  class="form-select d-block w-100"
+                >
+                  <option value="Fargona">Fargona</option>
+                  <option value="Bukhara">Bukhara</option>
+                  <option value="Samarqand">Samarqand</option>
+                  <option value="Toshkent">Toshkent</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="group" class="form-label">Lavozimi</label>
+                <select
+                  name="group"
+                  id="group"
+                  class="form-select d-block w-50 p-2"
+                >
+                  <option value="Senior">Senior</option>
+                  <option value="Middle">Middle</option>
+                  <option value="Junior">Junior</option>
+                </select>
+              </div>
+              <div class-3">
+                <label for="group" class="form-label">Lavozimi</label>
+                <input type="date" id="date"class="form-select d-block w-50
+                p-2"" placeholder="xx-xx-xxxx" />
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="uylanganmi"
+                  name="uylanganmi"
+                  id="uylanganmi"
+                />
+                <label class="form-check-label" for="doesWork">
+                  Uylanganmi?
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              Yopish
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              class="btn btn-primary"
+              id="btn-add-student"
+            >
+              Qo`shish
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      aria-labelledby="editModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="editModalLabel">Edit</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="IsmiEdit" class="form-label">Ismi</label>
+                <input
+                  type="text"
+                  id="IsmiEdit"
+                  name="IsmiEdit"
+                  class="form-control p-2"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="FamilyasiEdit" class="form-label">Familyasi</label>
+                <input
+                  type="text"
+                  id="FamilyasiEdit"
+                  name="FamilyasiEdit"
+                  class="form-control p-2"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="groupEdit" class="form-label">Select group</label>
+                <select
+                  name="groupEdit"
+                  id="groupEdit"
+                  class="form-select d-block w-100 p-2"
+                >
+                  <option value="REACT N32">REACT N32</option>
+                  <option value="REACT N45">REACT N45</option>
+                  <option value="REACT N50">REACT N50</option>
+                  <option value="REACT N58">REACT N58</option>
+                </select>
+              </div>
+              <div class="form-check mb-3">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="doesWorkEdit"
+                  id="uylanganmi"
+                />
+                <label class="form-check-label" for="doesWorkEdit">
+                  Uylanganmi
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              class="btn btn-primary"
+              id="btn-edit-student"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row py-3">
+        <div class="col col-6">
+          <input
+            type="text"
+            id="search"
+            name="search"
+            placeholder="Search"
+            class="form-control p-3"
+          />
+        </div>
+        <div class="col col-4 d-flex gap-3">
+          <select
+            name="filter-select"
+            id="filter-select"
+            class="form-select d-block w-50"
+          >
+            <option value="Lavozim turini tanlang">
+              Lavozim turini tanlang
+            </option>
+            <option value="Junior">Junior</option>
+            <option value="Middle">Middle</option>
+            <option value="Senior">Senior</option>
+          </select>
+          <select
+            name="filter-select"
+            id="filter-select"
+            class="form-select d-block w-50"
+          >
+            <option value="Lavozim turini tanlang">Tug`ilgan joyi</option>
+            <option value="Bukhara">Bukhara</option>
+            <option value="Samarqand">Samarqand</option>
+            <option value="Toshkent">Toshkent</option>
+          </select> 
+        </div>
+        <div class="col col-2 d-flex gap-3">
+          <button
+            class="btn btn-outline-success d-block w-50"
+            data-bs-toggle="modal"
+            data-bs-target="#addModal"
+          >
+            Qo`shish
+          </button>
+        </div>
+      </div>
+
+      <div class="row">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Ismi</th>
+              <th>Familya</th>
+              <th>Manzil</th>
+              <th>Tug`ilgan kuni</th>
+              <th>Lavozimi</th>
+              <th>Maoshi</th>
+              <th>Uylanganmi</th>
+              <th>Faoliyat</th>
+            </tr>
+          </thead>
+          <tbody id="students-list"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
